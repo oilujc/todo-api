@@ -1,9 +1,11 @@
 const Task = require("../models/Task");
 
 function taskList(req, res) {
-  console.log(req.query);
-
-  res.json({ message: "Lista de tareas" });
+  Task.find()
+    .then((docs) => {
+      res.json(docs);
+    })
+    .catch((err) => console.log(err));
 }
 
 function taskCreate(req, res) {
